@@ -1,13 +1,16 @@
 package main
 
 import (
-	"fmt"
 	"GinStudy/config"
-	"GinStudy/log"
 	"GinStudy/database"
+	"GinStudy/handler"
+	"GinStudy/log"
 	"flag"
+	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/viper"
+	"net/http"
+
 	//"github.com/gin-gonic/gin"
 	//"html/template"
 	//"log"
@@ -29,5 +32,24 @@ func main() {
 	database.InitMysql()
 	defer database.CloseMysql()
 	//初始化server
+	handler.Ginserver=gin.New()
+	handler.InitService()
+
+	srv:=&http.Server{
+		Addr: viper.GetString("server.host")+":"+viper.GetString("server.port"),
+		Handler: handler.Ginserver,
+	}
+	//log.Logger.Info().Msgf("address  %v",srv.Addr)
+	//log.Logger.Info().Msg(viper.GetString("server.host"))
+	//log.Logger.Info().Msg(viper.GetString("server.port"))
+	//log.Logger.Info().Msg(viper.GetString("server.port"))
+	//log.Logger.Info().Msg(srv.Addr)
+	//log.Logger.Info().Msgf("address  %v",srv.Addr)
+
+	func(){
+		if err:=srv.ListenAndServe();err!=nil && err!=http.ErrServerClosed{
+			log.Logger.Error().Msg("server closed with error")
+		}
+	}()
 
 }
