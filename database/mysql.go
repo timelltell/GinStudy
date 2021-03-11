@@ -16,7 +16,7 @@ func InitMysql(){
 		viper.GetString("mysql.usr"),
 		viper.GetString("mysql.pword"),
 		viper.GetString("mysql.address"),
-		viper.GetString("mysql.databse"))
+		viper.GetString("mysql.database"))
 	db,err:=gorm.Open(mysql.Open(dsn),&gorm.Config{})
 	if err!=nil{
 		log.Logger.Fatal().Msg("init mysql failed")

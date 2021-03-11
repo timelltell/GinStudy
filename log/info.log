@@ -171,3 +171,6 @@
 {"time":"2021-03-08T16:50:53+08:00","message":"[GIN-debug] POST   /expert_recommendation/test1 --> GinStudy/handler.Test1 (2 handlers)"}
 {"level":"info","time":"2021-03-08T16:50:57+08:00","message":"map[id:155 name:name]"}
 {"time":"2021-03-08T16:50:57+08:00","message":"[GIN] 2021/03/08 - 16:50:57 | 200 |   45.133846ms |       127.0.0.1 | POST     \"/expert_recommendation/test1\""}
+{"level":"info","time":"2021-03-11T13:05:00+08:00","message":"log init success"}
+{"level":"info","time":"2021-03-11T13:05:00+08:00","message":"init mysql success"}
+{"time":"2021-03-11T13:05:00+08:00","message":"[GIN-debug] POST   /expert_recommendation/test1 --> GinStudy/handler.Test1 (2 handlers)"}
